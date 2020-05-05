@@ -12,8 +12,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{036B189C-B27C-4383-B480-91DFB58A81FD}</ProjectGuid>
-    <RootNamespace>TestRun</RootNamespace>
+    <ProjectGuid>{EECEF23D-01DB-4971-9492-5EE5FCB4E081}</ProjectGuid>
+    <RootNamespace>Trapezoidaldecomposition</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -52,9 +52,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;IS_DEBUG=true;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Framework</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)simple_framework_for_2d_graphics_labs\Framework</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -70,9 +70,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;IS_DEBUG=true;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Framework</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)simple_framework_for_2d_graphics_labs\Framework</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -86,15 +86,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="trapezoidal_decomposition.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Framework\Framework.vcxproj">
-      <Project>{76892a50-816c-4996-9f13-dc32e77c90bd}</Project>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ClInclude Include="trapezoidal_decomposition.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\simple_framework_for_2d_graphics_labs\Framework\Framework.vcxproj">
+      <Project>{76892a50-816c-4996-9f13-dc32e77c90bd}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
