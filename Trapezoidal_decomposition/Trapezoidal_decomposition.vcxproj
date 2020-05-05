@@ -54,7 +54,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;IS_DEBUG=true;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Framework</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)simple_framework_for_2d_graphics_labs\Framework</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -72,7 +72,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;IS_DEBUG=true;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Framework</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)simple_framework_for_2d_graphics_labs\Framework</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -90,15 +90,15 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Framework\Framework.vcxproj">
-      <Project>{76892a50-816c-4996-9f13-dc32e77c90bd}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="trapezoidal_decomposition.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\simple_framework_for_2d_graphics_labs\Framework\Framework.vcxproj">
+      <Project>{76892a50-816c-4996-9f13-dc32e77c90bd}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
