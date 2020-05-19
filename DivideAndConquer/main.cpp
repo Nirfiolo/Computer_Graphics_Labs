@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "quick_hull.h"
+#include "divide_and_conquer.h"
 
 #include "imgui/imgui.h"
 
@@ -24,7 +24,7 @@ int main()
             {
                 if (ImGui::Button("Run"))
                 {
-                    quick_hull(vvve);
+                    divide_and_conquer(vvve);
                 }
             }
             ImGui::End();

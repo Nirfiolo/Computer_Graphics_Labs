@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "vvse.h"
+#include "vvve.h"
 
 
-void quick_hull(frm::vvse::VVSE & vvse) noexcept(!IS_DEBUG);
+void quick_hull(frm::vvve::VVVE & vvve) noexcept(!IS_DEBUG);

@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "simple_framewo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickHull", "QuickHull\QuickHull.vcxproj", "{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DivideAndConquer", "DivideAndConquer\DivideAndConquer.vcxproj", "{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -43,6 +45,12 @@ Global
 		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Release|x64.ActiveCfg = Release|x64
 		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Release|x64.Build.0 = Release|x64
 		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Release|x86.ActiveCfg = Release|x64
+		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Debug|x64.ActiveCfg = Debug|x64
+		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Debug|x64.Build.0 = Debug|x64
+		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Debug|x86.ActiveCfg = Debug|x64
+		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Release|x64.ActiveCfg = Release|x64
+		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Release|x64.Build.0 = Release|x64
+		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
