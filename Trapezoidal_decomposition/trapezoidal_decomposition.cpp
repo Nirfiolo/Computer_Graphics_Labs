@@ -44,71 +44,6 @@ void output_tree(std::ostream & os, std::shared_ptr<GraphNode> node, std::string
     }
 }
 
-size_t get_outside_face(frm::dcel::DCEL const & dcel) noexcept(!IS_DEBUG)
-{
-    size_t left_vertex_index = 0;
-    frm::Point left_vertex_point = dcel.vertices[0].coordinate;
-
-    for (size_t i = 0; i < dcel.vertices.size(); ++i)
-    {
-        frm::Point current_point = dcel.vertices[i].coordinate;
-
-        if (abs(current_point.x - left_vertex_point.x) < frm::epsilon)
-        {
-            if (current_point.y - left_vertex_point.y < frm::epsilon)
-            {
-                left_vertex_point = current_point;
-                left_vertex_index = i;
-            }
-        }
-        else if (current_point.x - left_vertex_point.x < frm::epsilon)
-        {
-            left_vertex_point = current_point;
-            left_vertex_index = i;
-        }
-    }
-
-    auto const get_vector_from_edge = [&dcel](size_t edge_index) noexcept -> frm::Point
-    {
-        size_t const current_edge_index = edge_index;
-        size_t const next_after_current_edge_index = dcel.edges[current_edge_index].next_edge;
-
-        size_t const current_vertex_index = dcel.edges[current_edge_index].origin_vertex;
-        size_t const next_after_current_vertex_index = dcel.edges[next_after_current_edge_index].origin_vertex;
-
-        frm::Point const current = dcel.vertices[current_vertex_index].coordinate;
-        frm::Point const next = dcel.vertices[next_after_current_vertex_index].coordinate;
-
-        return { next.x - current.x, next.y - current.y };
-    };
-
-    size_t outside_face_index = std::numeric_limits<size_t>::max();
-
-    size_t const current_vertex_index = left_vertex_index;
-
-    std::vector<std::pair<size_t, size_t>> adjacents = frm::dcel::get_adjacent_vertices_and_edges(dcel, current_vertex_index);
-
-    for (size_t i = 0; i < adjacents.size(); ++i)
-    {
-        size_t const current_edge_index = adjacents[i].second;
-        frm::Point const current = get_vector_from_edge(current_edge_index);
-        frm::Point const previuos = get_vector_from_edge(dcel.edges[current_edge_index].previous_edge);
-
-        float const angle = frm::angle_between_vectors(current, previuos);
-
-        if (angle > frm::epsilon)
-        {
-            outside_face_index = dcel.edges[current_edge_index].incident_face;
-        }
-
-        size_t f = 0;
-    }
-
-    assert(outside_face_index != std::numeric_limits<size_t>::max());
-
-    return outside_face_index;
-}
-
 std::shared_ptr<GraphNode> get_trapezoid_index(
     TrapezoidData const & trapezoid_data,
     std::shared_ptr<GraphNode> const & current,
@@ -666,13 +601,24 @@ void handle_middle_trapezoid(
     size_t const old_trapezoid_index = trapezoid->index_by_type;
     Trapezoid const old_trapezoid = trapezoid_data.trapezoids[old_trapezoid_index];
 
+    size_t const last_top_trapezoid_index = last_top_node->index_by_type;
+    size_t const last_bottom_trapezoid_index = last_bottom_node->index_by_type;
+
+    Trapezoid & last_top_trapezoid = trapezoid_data.trapezoids[last_top_trapezoid_index];
+    Trapezoid & last_bottom_trapezoid = trapezoid_data.trapezoids[last_bottom_trapezoid_index];
+
     if (is_last_point_over_line)
     {
         size_t const last_top_trapezoid_index = last_top_node->index_by_type;
         size_t const top_trapezoid_index = old_trapezoid_index;
 
-        Trapezoid & last_top_trapezoid = trapezoid_data.trapezoids[last_top_trapezoid_index];
+        last_top_trapezoid.right_end_index = old_trapezoid.left_end_index;
         last_top_trapezoid.bottom_right_neighbor_index = top_trapezoid_index;
+
+        if (!is_current_point_over_line)
+        {
+            last_bottom_trapezoid.bottom_right_neighbor_index = old_trapezoid.bottom_right_neighbor_index;
+        }
 
         Trapezoid & top_trapezoid = trapezoid_data.trapezoids[top_trapezoid_index];
         top_trapezoid.top_line_segment_index = old_trapezoid.top_line_segment_index;
@@ -709,8 +655,13 @@ void handle_middle_trapezoid(
         size_t const last_bottom_trapezoid_index = last_bottom_node->index_by_type;
         size_t const bottom_trapezoid_index = old_trapezoid_index;
 
-        Trapezoid & last_bottom_trapezoid = trapezoid_data.trapezoids[last_bottom_trapezoid_index];
+        last_bottom_trapezoid.right_end_index = old_trapezoid.left_end_index;
         last_bottom_trapezoid.top_right_neighbor_index = bottom_trapezoid_index;
+
+        if (is_current_point_over_line)
+        {
+            last_top_trapezoid.top_right_neighbor_index = old_trapezoid.top_right_neighbor_index;
+        }
 
         Trapezoid & bottom_trapezoid = trapezoid_data.trapezoids[bottom_trapezoid_index];
         bottom_trapezoid.top_line_segment_index = line_index;
@@ -764,6 +715,7 @@ void handle_last_trapezoid_with_existing_vertex(
         size_t const top_trapezoid_index = old_trapezoid_index;
 
         Trapezoid & last_top_trapezoid = trapezoid_data.trapezoids[last_top_trapezoid_index];
+        last_top_trapezoid.right_end_index = old_trapezoid.left_end_index;
         last_top_trapezoid.bottom_right_neighbor_index = top_trapezoid_index;
 
         Trapezoid & top_trapezoid = trapezoid_data.trapezoids[top_trapezoid_index];
@@ -792,6 +744,7 @@ void handle_last_trapezoid_with_existing_vertex(
         size_t const bottom_trapezoid_index = old_trapezoid_index;
 
         Trapezoid & last_bottom_trapezoid = trapezoid_data.trapezoids[last_bottom_trapezoid_index];
+        last_bottom_trapezoid.right_end_index = old_trapezoid.left_end_index;
         last_bottom_trapezoid.top_right_neighbor_index = bottom_trapezoid_index;
 
         Trapezoid & bottom_trapezoid = trapezoid_data.trapezoids[bottom_trapezoid_index];
@@ -859,6 +812,7 @@ void handle_last_trapezoid_without_existing_vertex(
         size_t const top_trapezoid_index = old_trapezoid_index;
 
         Trapezoid & last_top_trapezoid = trapezoid_data.trapezoids[last_top_trapezoid_index];
+        last_top_trapezoid.right_end_index = old_trapezoid.left_end_index;
         last_top_trapezoid.bottom_right_neighbor_index = top_trapezoid_index;
 
         Trapezoid & top_trapezoid = trapezoid_data.trapezoids[top_trapezoid_index];
@@ -887,6 +841,7 @@ void handle_last_trapezoid_without_existing_vertex(
         size_t const bottom_trapezoid_index = old_trapezoid_index;
 
         Trapezoid & last_bottom_trapezoid = trapezoid_data.trapezoids[last_bottom_trapezoid_index];
+        last_bottom_trapezoid.right_end_index = old_trapezoid.left_end_index;
         last_bottom_trapezoid.top_right_neighbor_index = bottom_trapezoid_index;
 
         Trapezoid & bottom_trapezoid = trapezoid_data.trapezoids[bottom_trapezoid_index];
@@ -1088,7 +1043,7 @@ trapezoid_data_and_graph_root_t generate_trapezoid_data_and_graph_root(frm::dcel
     TrapezoidData trapezoid_data{};
     std::shared_ptr<GraphNode> root;
 
-    size_t const outside_face_index = get_outside_face(dcel);
+    size_t const outside_face_index = frm::dcel::get_outside_face_index(dcel);
 
     // convert dcel to trapezoid data
     {
@@ -1218,6 +1173,7 @@ trapezoid_data_and_graph_root_t generate_trapezoid_data_and_graph_root(frm::dcel
     {
         size_t const begin_index = trapezoid_data.line_segments[i].begin_index;
         size_t const end_index = trapezoid_data.line_segments[i].end_index;
+
         frm::Point const begin = trapezoid_data.ends_of_line_segment[begin_index];
         frm::Point const end = trapezoid_data.ends_of_line_segment[end_index];
 
