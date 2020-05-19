@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Trapezoidal_decomposition",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "simple_framework_for_2d_graphics_labs\Framework\Framework.vcxproj", "{76892A50-816C-4996-9F13-DC32E77C90BD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickHull", "QuickHull\QuickHull.vcxproj", "{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -35,6 +37,12 @@ Global
 		{76892A50-816C-4996-9F13-DC32E77C90BD}.Release|x64.ActiveCfg = Release|x64
 		{76892A50-816C-4996-9F13-DC32E77C90BD}.Release|x64.Build.0 = Release|x64
 		{76892A50-816C-4996-9F13-DC32E77C90BD}.Release|x86.ActiveCfg = Release|x64
+		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Debug|x64.ActiveCfg = Debug|x64
+		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Debug|x64.Build.0 = Debug|x64
+		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Debug|x86.ActiveCfg = Debug|x64
+		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Release|x64.ActiveCfg = Release|x64
+		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Release|x64.Build.0 = Release|x64
+		{5F0DB136-CC51-4E14-A7A5-85A058E5B80A}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
