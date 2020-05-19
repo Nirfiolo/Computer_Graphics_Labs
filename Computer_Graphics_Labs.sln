@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickHull", "QuickHull\Quic
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DivideAndConquer", "DivideAndConquer\DivideAndConquer.vcxproj", "{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConvexHullOfASimplePolygon", "ConvexHullOfASimplePolygon\ConvexHullOfASimplePolygon.vcxproj", "{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,12 @@ Global
 		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Release|x64.ActiveCfg = Release|x64
 		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Release|x64.Build.0 = Release|x64
 		{3E72C0E8-0439-4EF6-92B8-CF9A584B618C}.Release|x86.ActiveCfg = Release|x64
+		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Debug|x64.ActiveCfg = Debug|x64
+		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Debug|x64.Build.0 = Debug|x64
+		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Debug|x86.ActiveCfg = Debug|x64
+		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Release|x64.ActiveCfg = Release|x64
+		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Release|x64.Build.0 = Release|x64
+		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
