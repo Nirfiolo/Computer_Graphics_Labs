@@ -117,23 +117,6 @@ constexpr SideByLine invert_side(SideByLine side) noexcept
         );
 }
 
-
-bool compare(frm::Point first, frm::Point second, frm::Point middle) noexcept
-{
-    frm::Point const p = { first.x - middle.x, first.y - middle.y };
-    frm::Point const q = { second.x - middle.x, second.y - middle.y };
-
-    Quad const one = quad(p);
-    Quad const two = quad(q);
-
-    if (one != two)
-    {
-        return static_cast<uint8_t>(one) < static_cast<uint8_t>(two);
-    }
-    return p.y * q.x - q.y * p.x < -frm::epsilon;
-}
-
-
 std::vector<size_t> merge(frm::vvve::VVVE const & vvve, std::vector<size_t> const & a, std::vector<size_t> const & b) noexcept
 {
     size_t const a_size = a.size();

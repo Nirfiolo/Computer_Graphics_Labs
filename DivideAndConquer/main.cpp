@@ -20,7 +20,7 @@ int main()
 
             is_dirty_vvve |= frm::vvve::spawn_ui(vvve, window, "Vvse_1.dat");
 
-            if (ImGui::Begin("QuickHull"))
+            if (ImGui::Begin("Divide and conquer"))
             {
                 if (ImGui::Button("Run"))
                 {
