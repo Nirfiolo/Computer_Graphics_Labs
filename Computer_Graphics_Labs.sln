@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DivideAndConquer", "DivideA
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConvexHullOfASimplePolygon", "ConvexHullOfASimplePolygon\ConvexHullOfASimplePolygon.vcxproj", "{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RangeSearchingIn2Dtree", "RangeSearchingIn2Dtree\RangeSearchingIn2Dtree.vcxproj", "{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -59,6 +61,12 @@ Global
 		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Release|x64.ActiveCfg = Release|x64
 		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Release|x64.Build.0 = Release|x64
 		{ABC60EE2-9432-4995-BBF0-5682EAE1ABBE}.Release|x86.ActiveCfg = Release|x64
+		{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}.Debug|x64.ActiveCfg = Debug|x64
+		{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}.Debug|x64.Build.0 = Debug|x64
+		{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}.Debug|x86.ActiveCfg = Debug|x64
+		{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}.Release|x64.ActiveCfg = Release|x64
+		{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}.Release|x64.Build.0 = Release|x64
+		{EDA14B97-5CF6-4832-8F48-1691D2BD3D60}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
